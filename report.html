@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>In Depth Report</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="DHRS Medical Insistance System">
+<meta name="keywords" content="HTML5, bootstrap, mobile, app, landing, ios, android, responsive">
+
+<!-- Font -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Themify Icons -->
+<link rel="stylesheet" href="css/themify-icons.css">
+<!-- Owl carousel -->
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<!-- Main css -->
+<link href="css/style.css" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target="#navbar" data-offset="30">
+
+<!-- Nav Menu -->
+
+<div class="nav-menu fixed-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-dark navbar-expand-lg">
+					<div class="collapse navbar-collapse" id="navbar">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item"> <a class="nav-link" href="index.html">HOME<span class="sr-only">(current)</span></a> </li>
+							<li class="nav-item"> <a class="nav-link active" href="report.html">REPORT</a> </li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<header class="bg-gradient" id="home">
+	<div class="container mt-5">
+		<h1><strong>DHRS Medical Insistance System</strong></h1>
+		<p class="tagline">A course project website for <strong>EECS 349 Machine Learning</strong> at <strong>Northwestern University</strong></p>
+		<p class="tagline">And an <strong>artificial intelligent</strong> system caring for your <strong>health</strong>, completely free of charge :)</p>
+	</div>
+	<div class="img-holder mt-3"><img src="images/bg.png" alt="phone" class="img-fluid"></div>
+</header>
+
+<div class="section light-bg" id="features">
+
+
+	<div class="container">
+
+		<div class="section-title">			
+			<h3>TEAM MEMBERS</h3>
+		</div>
+
+		<div class="row">
+			<div class="col-12 col-lg-6">
+				<div class="card features">
+					<div class="card-body">
+						<div class="media">
+							<span class="ti-face-smile gradient-fill ti-3x mr-3"></span>
+							<div class="media-body">
+								<h4 class="card-title">Jian Xu</h4>
+								<p class="card-text">JianXu2020@u.northwestern.edu</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="card features">
+					<div class="card-body">
+						<div class="media">
+							<span class="ti-settings gradient-fill ti-3x mr-3"></span>
+							<div class="media-body">
+								<h4 class="card-title">Rongqi Ding</h4>
+								<p class="card-text">RongqiDing2020@u.northwestern.edu</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+
+
+
+</div>
+<!-- // end .section -->
+<div class="section">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<!--<div class="box-icon"><span class="ti-mobile gradient-fill ti-3x"></span></div>-->
+				<h2 align = "center">In Depth Report</h2>
+				
+				<h3> Purpose </h3> 
+				<p class = "mb-lg-0">
+					The health and medical care industry is an industry of great importance and intricacy because it is related to everyone. What we’re looking forward to establish is a tool which takes patients’ symptoms (typed in words) as inputs and gives basic diagnose as outputs. A tool like this can be of great use. Patients can use it to get an idea of the potential explanation to their health problems and how severe it is. Doctors and hospitals can use it to assign patients to the most suitable department and reduce the amount of human labor involved.
+				</p>
+					<br>
+				<h3>Dataset</h3>
+				<p class = "mb-lg-0">
+					We used a medical transcription dataset from Kaggle: <a href = "https://www.kaggle.com/tboyle10/medicaltranscriptions">medical transcriptions</a>. This data set contains around 5000 samples, covering 40 medical specialties. From the various attributes, we made use of “description” and “medical specialty”. The former one is a sentence describing the symptoms the patient is having. The latter one is the professional area or department the patient’s doctor belong to. We split the whole data set in training set and test set with the ration of 7:3. For comparison purpose, the two sets were fixed throughout the process.
+
+				</p>
+					<br>
+				<h3>Pipeline</h3>
+				<p class = "mb-lg-0">
+					Our work can be broken down into three major subtasks: “Word Vectorization”, “Feature Extraction” and “Classification”. The raw input are first preprocessed into vectors using the “bag of words” idea, and then corresponding features (or key words) are extracted separately for every medical specialty (for reference simplicity, referred as ‘class’ in the following report). In the classification process, output value are assigned by the class whose features are what the test sample is closest to. A weighted distance calculation is used in this process.
+				</p>
+					<br>
+				<h4> i) Word Vectorization </h4>
+				<p class = "mb-lg-0">
+					Our preprocessing procedure contains the following steps. (a) Punctuation: “-” is replaced with “ ” to break down the words before all the punctuations are removed. (b) Regularization: All the letters are regularized to lowercase. (c) Stop Words: Stop words are removed from the sentence. (d) Tokenization: Up to this point, the input is still in “string” form. By tokenizing it, the string is separated into individual words and make up a “list” of word tokens. (e)  Lemmatization: To further generalize the applicability of this system, lemmatization is introduced. Words from the same family but with different affixes are grouped into one. For example, “allergies” is swapped for “allergy”. (f) Vectorization: After all the samples are tokenized, a vector marking the number of appearance of all the non-repeat input tokens can be created for every description (Bag of words). After all these steps, the preprocessing procedure is complete. Fig. 1 is shows the progress of preprocessing after each step.
+				</p>
+				<div align = "center">
+					<br>
+					<img src="images/preprocess.png" alt="graphic" width = 90%>
+					<br>
+					<p>Fig. 1 Step by step progress of preprocessing</p>
+				</div>
+				<br>
+				<h4> ii) Feature Extraction </h4>
+				<p class = "mb-lg-0">
+					Our idea for feature extraction came from the two-class classification problem. Instead of the classification results, what we made use of are the most weighted input dimensions, in this case, words. We implemented a slightly twisted “One-verses-all” liner calssification, trained with gradient descent. We tried out both softmax loss function and perceptron loss function. They performed pretty much the same and we ended up going with perceptron. Input samples wise, the positive samples are obviously the sample from the class of interest. The negative samples are randomly chosen from the rest of the classes for more diversity. For the purpose of a well-balanced data set, the same exact number of positive and negative samples is guaranteed. As shown in Fig.2, the training process converged nicely (we used a learning rate of 3e-2 and 500 iterations). After the training, the top 15 weighted input dimensions are extracted and saved as the feature of the corresponding class.
+				</p>
+				<div align = "center">
+					<br>
+					<img src="images/features.jpg" alt="graphic" width = 75%>
+					<br>
+					<p>Fig. 2</p>
+				</div>
+				<br>
+				<h4> iii) Classification </h4>
+				<p class = "mb-lg-0">
+					As we already have the training and testing data and the labels, then we can build our system. Base on the problem we are trying to solve and the form of our input data, also according to our former experiments, we decided to use KNN as our classification algorithm. So in that case there is no training required. As our training data are some txt files each contain 15 keywords and corresponding weight, first thing is to parse the training data. We create a list to save all the symptoms and their keywords, each symptom is a dictionary and the keywords in it is the index, each keywords’ weight saved in their corresponding index. Then we writing our own KNN algorithm to compute the distance between our new input data and the training data. We use weighted L1 norm to compute the distance, which means if there is one keyword in the new input that match the keywords in our training data, then our distance minus the weight plus one, if the keyword is not in the training keywords then the distance minus the weight plus zero which equal to zero. We use a loop to compute all the keywords’ matching and after the loop is done, we output a list contain the distance of all the distance between our new input and our training data, then we use ‘argmin’ to select the smallest label as the output classifications, meanwhile we also output the second smallest and the third smallest labels as candidates.
+				</p>
+					<br>
+				<p class = "mb-lg-0">
+					Because each training keywords in different symptoms has different weight scale, so in order to achieve a more reasonable result, we normalize all the weights in a symptom to 1, so the result will have little influence if there is a keyword that has a much larger weight that disturb the other keywords. Even more, we averaged each distance so we won’t have a super large distance if the input sentence has a lot of keywords.
+				</p>
+					<br>
+				<h3>Analysis</h3>
+				<p class = "mb-lg-0">
+					Next, after we tested our code and make sure it can achieve what we want, we use our model to test on our test dataset.
+				</p>
+				<div align = "center">
+					<br>
+					<img src="images/f3.png" alt="graphic" width = 30%>
+					<br>
+					<p>Fig. 3</p>
+				</div>
+					<br>
+				<p class = "mb-lg-0">
+					According to the test result, we can achieve very high accuracy in some symptoms, like Allergy Immunology(Figure 1) and Autopsy can achieve 100% accuracy and SleepMedicine(Figure 2) and Rheumatology have 60%.
+				</p>
+				<div align = "center">
+					<br>
+					<img src="images/f4.png" alt="graphic" width = 30%>
+					<br>
+					<p>Fig. 4</p>
+				</div>
+					<br>
+				<p class = "mb-lg-0">
+					But there do exist some symptoms that the accuracy is super low, like the accuracy of Surgery(Figure 3) and Neurosurgery are nearly zero. 
+				</p>
+				<div align = "center">
+					<br>
+					<img src="images/f5.png" alt="graphic" width = 30%>
+					<br>
+					<p>Fig. 5</p>
+				</div>
+					<br>
+				<p class = "mb-lg-0">
+					We believe that this is due to the inconsistency of the training and testing dataset. The keywords we extracted from the training data is somehow a lot different from the keywords we extracted from the testing data, so when we run the test dataset on the model we trained based on training dataset, the model cannot correctly detect the similarity, then the accuracy becomes a lot lower. So the quality of the keywords we extracted from the data is really important to our system.
+				</p>
+					<br>
+				<p class = "mb-lg-0">
+					Final step, we tried our model on some simple sentences that we created to test the robustness of our system. See figure 6. 
+				</p>
+					<br>
+				<div align = "center">
+					<br>
+					<img src="images/f6.png" alt="graphic" width = 60%>
+					<br>
+					<p>Fig. 6</p>
+				</div>
+				<p class = "mb-lg-0">
+					The result is reasonable for some sentences, but there also have some sentences that output the less related labels. See figure 7.
+				</p>
+					<br>
+				<div align = "center">
+					<br>
+					<img src="images/f7.png" alt="graphic" width = 60%>
+					<br>
+					<p>Fig. 7</p>
+				</div>
+				<p class = "mb-lg-0">
+					We think that is due to the dataset we use is limited so the keyword we extracted from it is also limited, which mean the keywords we have may not perfectly represent the symptom we want, there exist some noisy keywords like ‘2’, ’year’ etc. So when the keywords we used to test are not that representative, the result may not that reasonable as well.
+				</p>
+					<br>
+				<h2>Future Work</h2>
+				<p class = "mb-lg-0">
+					As our dataset isn’t that large and the consistency is also not so good, we would like to find a better dataset and maybe using LSTM and RNN to extract keywords is a better choice. If the system is greatly done, this system can apply to a lot of daily-life scenarios.
+				</p>
+					<br>
+				<h2>Team Work</h2>
+				<p class = "mb-lg-0">
+					Jian Xu: worked on feature extraction and website design
+				</p>
+				<p>
+					Rongqi Ding: worked on classification algorithm design
+				</p>
+					<br>
+
+
+				<a href="DHRS Medical Insistance System Final Report_Jian Xu _ Rongqi Ding.pdf" class="btn btn-primary">See PDF</a>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<!-- // end .section -->
+
+<footer class="my-5 text-center">
+	<!-- Copyright removal is not prohibited! -->
+	<p class="mb-2">Copyright &copy; 2018. <strong>Northwestern University</strong> all rights reserverd.</p>
+	<p calss="mb-2"><strong>Jian Xu</strong> JianXu2020@u.northwestern.edu | <strong>Rongqi Ding</strong> RongqiDing2020@u.northwestern.edu</p>
+
+</footer>
+
+<!-- jQuery and Bootstrap -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<!-- Plugins JS -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Custom JS -->
+<script src="js/script.js"></script>
+
+</body>
+
+</html>
