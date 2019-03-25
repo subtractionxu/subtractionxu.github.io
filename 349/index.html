@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>DHRS Medical Assistance System</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="DHRS Medical Assistance System">
+<meta name="keywords" content="HTML5, bootstrap, mobile, app, landing, ios, android, responsive">
+
+<!-- Font -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Themify Icons -->
+<link rel="stylesheet" href="css/themify-icons.css">
+<!-- Owl carousel -->
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<!-- Main css -->
+<link href="css/style.css" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target="#navbar" data-offset="30">
+
+<!-- Nav Menu -->
+
+<div class="nav-menu fixed-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-dark navbar-expand-lg">
+					<div class="collapse navbar-collapse" id="navbar">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item"> <a class="nav-link active" href="index.html">HOME<span class="sr-only">(current)</span></a> </li>
+							<li class="nav-item"> <a class="nav-link" href="report.html">REPORT</a> </li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<header class="bg-gradient" id="home">
+	<div class="container mt-5">
+		<h1><strong>DHRS Medical Assistance System</strong></h1>
+		<p class="tagline">A course project website for <strong>EECS 349 Machine Learning</strong> at <strong>Northwestern University</strong></p>
+		<p class="tagline">And an <strong>artificial intelligent</strong> system caring for your <strong>health</strong>, completely free of charge :)</p>
+	</div>
+	<div class="img-holder mt-3"><img src="images/bg.png" alt="phone" class="img-fluid"></div>
+</header>
+
+<div class="section light-bg" id="features">
+
+
+	<div class="container">
+
+		<div class="section-title">			
+			<h3>TEAM MEMBERS</h3>
+		</div>
+
+		<div class="row">
+			<div class="col-12 col-lg-6">
+				<div class="card features">
+					<div class="card-body">
+						<div class="media">
+							<span class="ti-face-smile gradient-fill ti-3x mr-3"></span>
+							<div class="media-body">
+								<h4 class="card-title">Jian Xu</h4>
+								<p class="card-text">JianXu2020@u.northwestern.edu</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="card features">
+					<div class="card-body">
+						<div class="media">
+							<span class="ti-settings gradient-fill ti-3x mr-3"></span>
+							<div class="media-body">
+								<h4 class="card-title">Rongqi Ding</h4>
+								<p class="card-text">RongqiDing2020@u.northwestern.edu</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+
+
+
+</div>
+<!-- // end .section -->
+<div class="section">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<!--<div class="box-icon"><span class="ti-mobile gradient-fill ti-3x"></span></div>-->
+				<h2 align = 'center'>About DHRS Medical Assistance System</h2>
+				
+				<!--<h3 align = "left"> Purpose </h3> -->
+				<p class = "mb-lg-0">
+					The health and medical care industry is an industry of great importance and intricacy and we would lime to make the medical system more accessible to the non-professionals, and at the same time, reduce the heavy work load placed on the professionals. What we’re looking forward to establish is a tool which takes patients’ symptoms (typed in words) as inputs and gives basic diagnose as outputs. A tool like this can be of great use. Patients can use it to get an idea of the potential explanation to their health problems and how severe it is. Doctors and hospitals can use it to assign patients to the most suitable department and reduce the amount of human labor involved.
+				</p>
+					<br>
+				<p>
+					Our work can be broken down into three major subtasks: “Word Vectorization”, “Feature Extraction” and “Classification”, utiliazing machine laerning approches including "Linear Classification" and "Weighted Nearest Neighbor". The raw input are first preprocessed into vectors using the “bag of words” idea, and then corresponding features (or key words) are extracted separately for every medical specialty (class). In the classification process, output value are assigned by the class whose features are what the test sample is closest to. A weighted distance calculation is used in this process.
+				</p>
+					<br>
+					<br>
+				<p>
+					Our system achived very promising accuracy on some classes, for example, Allergy / Immunology and Autopsy. Mean while, it performed rather poorly on some classes such as Surgery.We believe that this is due to the inconsistency of the training and testing dataset. The dataset we used is limited and not the most ideal for our task because of the way the input sentences are stuctured. So the keyword we extracted from it is also limited and less ideal. We believe our system can apply to fields beyond medical industry and we plan on testing our system on better suited datasets. 
+				</p>
+				<a href="report.html" class="btn btn-primary">In depth report</a>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<!-- // end .section -->
+
+
+<div class="section light-bg">
+	<div class="container">
+		<div class="section-title">
+			<!--<small>FEATURES</small>-->
+			<h2>Step By Step Demo</h2>
+		</div>
+
+		<ul class="nav nav-tabs nav-justified" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" data-toggle="tab" href="#communication"><h4>Input/Output</h4></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#schedule"><h4>Word Vectorization</h4></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#messages"><h4>Feature Extraction</h4></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#livechat"><h4>Classification</h4></a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane fade show active" id="communication">
+				<div class="d-flex flex-column flex-lg-row">
+					<div>
+						<h2>Input/Output</h2>
+						<p class="lead">From 'symptems' to 'the most related medical department'</p>
+						<p>The raw input is a sentance or two describing the symptons of the paitient in words. For example,</p>
+						<h5 align = center>"A 23-year-old white female presents with complaint of allergies."</h5>
+						<p> The output we're expecting is the medical department this patient could most likely seek help from. In this case, the output should be</p>
+						<h5 align = center>Allergy / Immunology</h5>
+
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="schedule">
+				<div class="d-flex flex-column flex-lg-row">
+					<div>
+						<h2>Word Vectorization</h2>
+						<p class="lead">'Preprocess' and 'Bag of Words' </p>
+						<p>The first thing we need to do to preprocess the raw inputs. After steps such as removing punctuations, regularization, removing stop words, tokenization and lemmatization, a raw input such as "A 23-year-old white female presents with complaint of allergies." will be transformed into a list of words tokens are shown in the picture below.
+						</p>
+						<div class = "margin = 10px">
+							<img src="images/preprocess.png" alt="graphic" width = 100%>
+						</div>
+						<br>
+						<p> The next step is to vectorized the list of words, using the "Bag Of Words" theory as shown below. (The is a toy sample, the dimension of our actual vectors are to big for a clear visualization purpose.)
+						</p>
+						<div class = "margin = 10px" align = center>
+							<img src="images/bow.jpg" alt="graphic" width = 80%>
+						</div>						
+					</div>
+					
+				</div>
+			</div>
+			<div class="tab-pane fade" id="messages">
+				<div class="d-flex flex-column flex-lg-row">
+					<div>
+						<h2>Feature Extraction</h2>
+						<p class="lead">Learning the 'key words' for every medical department</p>
+						<p>Our goal of feature (or key words) extaction is achieved through linear calssification. Performing a slightly twisted "one-verses-all" classification of all of the exixting department's sample set, we're alble to get hold of the top 15 weighted words for every class, AKA the most important 15 words for every medical departments, and their final weights after the training.
+						</p>
+						<div>
+						<div class = "img-fluid rounded" align = center>
+							<img src="images/features.jpg" alt="graphic" width = 75%>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="livechat">
+				<div class="d-flex flex-column flex-lg-row">
+					<div>
+						<h2>Classification</h2>
+						<p class="lead">Generate outputs for new inputs. </p>
+						<p>We use weighted L1 norm to compute the distance between the test sample and the features for every class and save them as a list. Then we use ‘argmin’ to select the smallest label as the output classifications, meanwhile we also output the second smallest and the third smallest labels as candidates.
+						</p>
+						<p>
+						We normalize all the weights in a symptom to unit length, so the result won't be affected too much if there is a keyword that has a much larger weight that disturb the other keywords. Furthermore, we added regularization across all the calcualte distance for a more reliable result.
+						</p>
+
+						<div class = "img-fluid rounded" align = center>
+							<img src="images/f6.png" alt="graphic" width = 80%>
+							<br> 
+							<p>Out put of a test sample.</p>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+<!-- // end .section -->
+
+<footer class="my-5 text-center">
+	<!-- Copyright removal is not prohibited! -->
+	<p class="mb-2">Copyright &copy; 2018. <strong>Northwestern University</strong> all rights reserverd.</p>
+	<p calss="mb-2"><strong>Jian Xu</strong> JianXu2020@u.northwestern.edu | <strong>Rongqi Ding</strong> RongqiDing2020@u.northwestern.edu</p>
+
+</footer>
+
+<!-- jQuery and Bootstrap -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<!-- Plugins JS -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Custom JS -->
+<script src="js/script.js"></script>
+
+</body>
+
+</html>
