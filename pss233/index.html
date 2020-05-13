@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>牛牛小冒险</title>
+	<link rel="stylesheet" href="bootstrap.css">
+	<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+	<style type="text/css">
+		html {
+			scroll-behavior: smooth;
+		}
+		.cover {
+			background: url(imgs/cover.jpg);
+			background-size: cover;
+			height: 100vh;
+		}
+		.play {
+			position: absolute;
+			left: 20px;
+			bottom: 20px;
+		}
+		.music_icon {
+			position: absolute;
+			right: 20px;
+			bottom: 20px;
+		}
+		.game {
+			background: url(imgs/path.jpg);
+			background-size: cover;
+			height: 100vh;			
+		}
+		.cow {
+			position: absolute;
+			left: 5%;
+			height: 37%;
+			visibility: visible;
+			z-index: 10;
+		}
+		.dice {
+			position: absolute;
+			top: 123vh;
+			left: 9%;
+			z-index: 20;
+		}
+		.dice_number {
+			width: 100%
+			height: 100vh;
+			display: none;
+		}
+		#dialogbg {
+			display: none;
+			width: 100%;
+			height: 100vh;
+			background: #000;
+		}
+
+		#dialogbg {
+			display: none;
+			width: 100%;
+			height: 100vh;
+			background: url(imgs/board.jpg);
+			background-size: cover;
+			z-index: 30;
+			text-align: center;
+		}
+
+		#dialogbox {
+			display: none;
+			width: 100%;
+			height: 100%;
+			padding-top: 15%;
+			padding-left: 25%;
+			padding-right: 25%;
+			color: #000;
+			font-size: x-large;
+			font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+		}
+		.ok {
+			font-size: x-large;
+			padding: 15px 25px;
+			border-radius: 25px;
+			border: 3px solid #7b643a;
+			background-color: #ede59b;
+		}
+	</style>
+</head>
+
+<script>
+	var current = 0;
+	var cow_size = 259 * 0.37;
+	var stride_horizontal = window.screen.width / 3;
+	var stride_vertical = 1.3 * window.screen.height / 3;
+	var speed = 800;
+	Alert = new custom_alert();
+	
+
+	function new_round(){
+		move_cnt = roll_dice();
+
+		setTimeout(function() {move(current + move_cnt);}, 3500);
+		setTimeout(function() {action(current);}, 4000 + Math.min(11 - current, move_cnt) * speed);
+	}
+
+	function roll_dice(){
+		num = Math.floor(Math.random() * 6) + 1;
+		if (num == 1) {
+			my_slide_toggle($ (" #one "));
+		}
+		if (num == 2) {
+			my_slide_toggle($ (" #two "));
+		}
+		if (num == 3) {
+			my_slide_toggle($ (" #three "));
+		}
+		if (num == 4) {
+			my_slide_toggle($ (" #four "));
+		}
+		if (num == 5) {
+			my_slide_toggle($ (" #five "));
+		}
+		if (num == 6) {
+			my_slide_toggle($ (" #six "));
+		}				
+		my_toggle($ ( ".cow" ));
+		my_toggle($ ( ".dice" ));
+		return num;
+	}
+
+	function my_toggle(obj){
+		obj.toggle();
+		setTimeout(function() {obj.toggle();}, 3000);
+	}
+
+	function my_slide_toggle(obj){
+		obj.slideToggle(800);
+		setTimeout(function() {obj.slideToggle(800);}, 2300);
+	}
+
+	function move(target){
+		
+		while (current != target && current <= 10){
+			if (target > current) {
+				forward = 1
+			} else {
+				forward = -1
+			}
+			if (current == 4 || current == 5 || current == 6) {
+				direction = -1 * forward
+			} else {
+				direction = forward
+			}
+			// alert(current +" "+ target +" "+ forward +" "+ direction);
+			if (current == 3 || current == 7) {
+				move_vertical(forward, direction);
+			} else {
+				move_horizontal(forward, direction);
+			}
+		}
+	}
+
+
+	function move_horizontal(forward, direction){
+		if (direction == -1) {
+			document.getElementById("mow").src = "imgs/walk_left.gif"
+		}
+		else {
+			document.getElementById("mow").src = "imgs/walk_right.gif"
+		}
+		$('.cow').animate({ "left": "+=" + direction * stride_horizontal + "px" }, speed );	
+		current += forward * 1;
+	}
+
+	function move_vertical(forward, direction){
+		$('.cow').animate({ "top": "+=" + direction * stride_vertical + "px" }, speed );	
+		current += forward * 1;
+	}
+
+	function custom_alert() {
+		this.render = function(dialog) {
+			$ ( "#dialogbg" ).toggle();
+			$ ( "#dialogbox" ).toggle();
+			document.getElementById("dialogboxtop").innerHTML=dialog;
+		}
+
+		this.ok = function() {
+			$ ( "#dialogbg" ).toggle();
+			$ ( "#dialogbox" ).toggle();
+			$ ( ".cow" ).toggle();
+			$ ( ".dice" ).toggle();
+			if (current == 1) {
+				move(2);
+			}
+			else {
+				if (current == 6) {
+					move(4);
+				}
+				else {
+					if (current == 10) {
+						move(9);
+					}
+				}					
+			}
+		}
+	}
+
+	function action(step_num){
+		$ ( ".cow" ).toggle();
+		$ ( ".dice" ).toggle();
+		
+		switch (current) {
+			case 1:
+				Alert.render("获得小猪加油站免费加油服务，前进一格!");
+				break;
+			case 2:
+				Alert.render("获得猪猪按摩店体验券一张！");
+				break;
+			case 3:
+				Alert.render('叮咚叮！绕口令挑战！&nbsp;“里约热内卢的奶牛拿榴莲牛奶以折足之姿跑到委内瑞拉拿了蜂花护发素送给红鲤鱼与绿鲤鱼与驴”');
+				break;
+			case 4:
+				Alert.render('获得猪猪点唱机点歌券一张ww');
+				break;
+			case 5:
+				Alert.render('吭哧吭哧，获得猪猪料理品尝券一张-w-');
+				break;
+			case 6:
+				Alert.render("哎呀小牛把钱包忘在路上了，后退两格去找找。");
+				break;
+			case 7:
+				Alert.render('嗯嗯嗯！获得观看团团跳舞机会一次！');
+				break;
+			case 8:
+				Alert.render('呜哇哇脑筋急转弯！“有一只猪，它走啊走啊，走到了英国,结果他变成了什么?”');
+				break;
+			case 9:
+				Alert.render('获得猪猪神灯许愿券一张！');
+				break;
+			case 10:
+				Alert.render("涉嫌超速！后退一格！");
+				break;
+			case 11:
+				window.location.href = "present.html";
+				break;
+		}
+
+	}
+</script>
+
+<body>
+	<audio id="bgm" controls loop hidden>
+		<source src="bgm.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+
+	<div class="cover">
+		<div class="play">
+			<a href="#game"><img src="imgs/play.png" width= 120px></a>
+		</div>
+		<div class="music_icon">
+			<img src="imgs/music.png" height = 80px onClick="document.getElementById('bgm').play(); return false;">
+			<img src="imgs/music_mute.png" height = 80px onClick="document.getElementById('bgm').pause(); return false;">	
+		</div>		
+	</div>
+
+	<div class="game" id="game">
+		<div id="dialogbg">
+			<div id="dialogbox">
+				<div id="dialogboxtop" style="padding-bottom: 6%"></div>
+				<div id="dialogboxbottom">
+					<button class="button ok" onclick="Alert.ok()">好的ww</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="cow">
+			<img id="mow" src="imgs/walk_right.gif" height=100%>	
+		</div>
+		<div class="dice">
+			<img src="imgs/dice.png" width = 85px onclick="new_round();">
+		</div>
+
+		<div class="dice_number" id="one">
+			<img src="imgs/one.jpg" width=100%>
+		</div>
+		<div class="dice_number" id="two">
+			<img src="imgs/two.jpg" width=100%>
+		</div>
+		<div class="dice_number" id="three">
+			<img src="imgs/three.jpg" width=100%>
+		</div>
+		<div class="dice_number" id="four">
+			<img src="imgs/four.jpg" width=100%>
+		</div>
+		<div class="dice_number" id="five">
+			<img src="imgs/five.jpg" width=100%>
+		</div>
+		<div class="dice_number" id="six">
+			<img src="imgs/six.jpg" width=100%>
+		</div>	 
+
+	</div>
+
+	
+</body>
+</html>
