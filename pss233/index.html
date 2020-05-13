@@ -88,10 +88,10 @@
 <script>
 	var current = 0;
 	var cow_size = 259 * 0.37;
-	alert(window.screen.width);
-	alert(window.screen.height);
-	var stride_vertical = window.screen.width / 3;
-	var stride_horizontal = 1.3 * window.screen.height / 3;
+	// alert(window.screen.width);
+	// alert(window.screen.height);
+	var stride_vertical = Math.min(window.screen.width, window.screen.height) / 3;
+	var stride_horizontal = Math.max(window.screen.width, window.screen.height) / 3;
 	var speed = 800;
 	Alert = new custom_alert();
 	
